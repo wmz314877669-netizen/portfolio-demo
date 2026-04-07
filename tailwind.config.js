@@ -9,13 +9,13 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          bg: '#0F1115',
-          card: '#161922',
-          border: '#2A2D35',
+          bg: '#0a0a0a',
+          card: '#111111',
+          border: '#1a1a1a',
         },
         accent: {
-          purple: '#8B5CF6',
-          blue: '#3B82F6',
+          yellow: '#F9D416',
+          'yellow-dark': '#d4b513',
         }
       },
       fontFamily: {

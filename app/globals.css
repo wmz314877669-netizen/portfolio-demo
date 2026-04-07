@@ -6,28 +6,45 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0F1115;
+  background-color: #0a0a0a;
   color: #ffffff;
 }
 
 /* Dark theme base */
 html {
-  background-color: #0F1115;
+  background-color: #0a0a0a;
 }
 
-/* Custom gradient text */
+/* Custom gradient text - Yellow accent */
 .gradient-text {
-  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #F9D416 0%, #d4b513 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Yellow text accent */
+.text-yellow {
+  color: #F9D416;
+}
+
 /* Glass effect */
 .glass {
-  background: rgba(22, 25, 34, 0.8);
+  background: rgba(17, 17, 17, 0.8);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Giant background text */
+.bg-text {
+  font-size: 25vw;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(249, 212, 22, 0.15);
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Smooth scroll */
