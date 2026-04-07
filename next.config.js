@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  distDir: 'out',
+  distDir: 'docs',
+  assetPrefix: '/portfolio-demo',
   images: {
     unoptimized: true,
   },
