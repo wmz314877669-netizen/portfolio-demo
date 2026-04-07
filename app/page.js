@@ -75,8 +75,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="group relative glass rounded-2xl p-8 cursor-pointer overflow-hidden"
+                className="group relative glass rounded-2xl p-8 cursor-pointer overflow-hidden hover:border-accent-purple/50 transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/10 to-accent-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
