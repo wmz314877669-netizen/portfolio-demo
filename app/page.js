@@ -17,7 +17,7 @@ export default function Home() {
       <section className="relative px-6 py-32 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ y: 40 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -29,7 +29,7 @@ export default function Home() {
           </motion.div>
           
           <motion.p
-            initial={{ y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-xl text-gray-400 max-w-2xl mb-12"
@@ -39,7 +39,7 @@ export default function Home() {
           </motion.p>
           
           <motion.div
-            initial={{ y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex gap-4"
@@ -59,8 +59,8 @@ export default function Home() {
       <section className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            initial={{ y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-3xl font-bold mb-12"
           >
@@ -71,7 +71,7 @@ export default function Home() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ y: 30 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -102,7 +102,7 @@ export default function Home() {
       <section className="px-6 py-32">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
