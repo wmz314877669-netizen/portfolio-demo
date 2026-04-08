@@ -43,12 +43,13 @@ export default function Home() {
         >
           {/* Letter W - moves left/up */}
           <motion.span
-            className="absolute text-[28vw] font-black tracking-tighter"
+            className="absolute text-[38vw] font-black"
             style={{
               x: letterW_X,
               y: letterW_Y,
               color: '#F9D416',
-              left: '10%',
+              left: '2%',
+              letterSpacing: '-0.05em',
             }}
           >
             W
@@ -56,11 +57,12 @@ export default function Home() {
           
           {/* Letter M - moves down slightly */}
           <motion.span
-            className="absolute text-[28vw] font-black tracking-tighter"
+            className="absolute text-[38vw] font-black"
             style={{
               x: letterM_X,
               y: letterM_Y,
               color: '#F9D416',
+              letterSpacing: '-0.05em',
             }}
           >
             M
@@ -68,12 +70,13 @@ export default function Home() {
           
           {/* Letter Z - moves right/up */}
           <motion.span
-            className="absolute text-[28vw] font-black tracking-tighter"
+            className="absolute text-[38vw] font-black"
             style={{
               x: letterZ_X,
               y: letterZ_Y,
               color: '#F9D416',
-              right: '10%',
+              right: '2%',
+              letterSpacing: '-0.05em',
             }}
           >
             Z
