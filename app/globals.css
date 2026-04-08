@@ -52,7 +52,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Engineering grid background - Uniform 1px lines */
+/* Engineering grid background - Uniform 1px lines with plus markers */
 .engineering-grid {
   position: fixed;
   top: 0;
@@ -66,4 +66,21 @@ html {
     linear-gradient(rgba(249, 212, 22, 0.3) 1px, transparent 1px),
     linear-gradient(90deg, rgba(249, 212, 22, 0.3) 1px, transparent 1px);
   background-size: 50px 50px;
+}
+
+/* Plus markers at grid intersections - 2px thick, 14px long (1/3.5 of 50px) */
+.engineering-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* Horizontal bar of plus: 14px wide, 2px thick, centered */
+    linear-gradient(90deg, transparent 18px, rgba(249, 212, 22, 0.5) 18px, rgba(249, 212, 22, 0.5) 32px, transparent 32px),
+    /* Vertical bar of plus: 14px tall, 2px thick, centered */
+    linear-gradient(0deg, transparent 18px, rgba(249, 212, 22, 0.5) 18px, rgba(249, 212, 22, 0.5) 32px, transparent 32px);
+  background-size: 50px 50px;
+  background-position: 0 0;
 }
