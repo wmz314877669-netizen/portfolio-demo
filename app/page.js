@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { useRef } from 'react'
 
 const projects = [
@@ -18,66 +18,105 @@ export default function Home() {
     offset: ["start start", "end end"]
   })
 
-  const bgTextY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const bgTextOpacity = useTransform(scrollYProgress, [0, 0.3], [0.15, 0.05])
+  // Letter split effect on scroll
+  const letterW_X = useTransform(scrollYProgress, [0, 0.3], ["0%", "-15%"])
+  const letterW_Y = useTransform(scrollYProgress, [0, 0.3], ["0%", "-8%"])
+  const letterM_X = useTransform(scrollYProgress, [0, 0.3], ["0%", "0%"])
+  const letterM_Y = useTransform(scrollYProgress, [0, 0.3], ["0%", "3%"])
+  const letterZ_X = useTransform(scrollYProgress, [0, 0.3], ["0%", "15%"])
+  const letterZ_Y = useTransform(scrollYProgress, [0, 0.3], ["0%", "-10%"])
+
+  // Hero content fade
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
+  const heroY = useTransform(scrollYProgress, [0, 0.15], ["0%", "-20%"])
 
   return (
     <main ref={containerRef} className="min-h-screen bg-dark-bg overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-6 overflow-hidden">
+      {/* Engineering Grid Background */}
+      <div className="engineering-grid" />
+
+      {/* Hero Section - Giant Typography with Letter Split */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Giant WMZ Letters - Split on scroll */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-          style={{ y: bgTextY, opacity: bgTextOpacity }}
         >
-          <span className="text-[25vw] font-black tracking-tighter text-transparent"
-            style={{ WebkitTextStroke: '2px rgba(249, 212, 22, 0.2)' }}
+          {/* Letter W - moves left/up */}
+          <motion.span
+            className="absolute text-[85vw] font-black tracking-tighter"
+            style={{
+              x: letterW_X,
+              y: letterW_Y,
+              color: 'transparent',
+              WebkitTextStroke: '2px rgba(249, 212, 22, 0.6)',
+              left: '-5%',
+            }}
           >
-            WMZ
-          </span>
+            W
+          </motion.span>
+          
+          {/* Letter M - moves down slightly */}
+          <motion.span
+            className="absolute text-[85vw] font-black tracking-tighter"
+            style={{
+              x: letterM_X,
+              y: letterM_Y,
+              color: 'transparent',
+              WebkitTextStroke: '2px rgba(249, 212, 22, 0.8)',
+            }}
+          >
+            M
+          </motion.span>
+          
+          {/* Letter Z - moves right/up */}
+          <motion.span
+            className="absolute text-[85vw] font-black tracking-tighter"
+            style={{
+              x: letterZ_X,
+              y: letterZ_Y,
+              color: 'transparent',
+              WebkitTextStroke: '2px rgba(249, 212, 22, 0.6)',
+              right: '-5%',
+            }}
+          >
+            Z
+          </motion.span>
         </motion.div>
 
-        <div className="relative z-10 max-w-6xl mx-auto w-full">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-5xl md:text-8xl font-bold mb-6">
-              <span className="text-white">Creative</span><br />
-              <span style={{ color: '#F9D416' }}>Designer</span>
-            </h1>
-          </motion.div>
-
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12"
-          >
-            Crafting digital experiences with precision and creativity.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex gap-4">
-            <button className="group flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-black transition-all hover:scale-105" style={{ backgroundColor: '#F9D416' }}>
-              View Work<ArrowRight className="w-5 h-5 group-hover:translate-x-1" />
-            </button>
-            <button className="px-8 py-4 border rounded-full font-semibold transition-all hover:bg-white/5" style={{ borderColor: '#F9D416', color: '#F9D416' }}>
-              Contact
-            </button>
-          </motion.div>
-        </div>
-
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2" animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-          <div className="w-6 h-10 border-2 rounded-full flex justify-center pt-2" style={{ borderColor: '#F9D416' }}>
-            <div className="w-1 h-2 rounded-full" style={{ backgroundColor: '#F9D416' }} />
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border border-yellow-400/50 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-yellow-400 rounded-full" />
           </div>
         </motion.div>
       </section>
 
       {/* Projects Grid */}
-      <section className="px-6 py-32">
+      <section className="px-6 py-32 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold mb-16"
+          >
             Selected <span style={{ color: '#F9D416' }}>Work</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <motion.div key={project.id} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative rounded-2xl p-8 cursor-pointer overflow-hidden transition-all" style={{ backgroundColor: '#111', border: '1px solid #1a1a1a' }}
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative rounded-2xl p-8 cursor-pointer overflow-hidden transition-all"
+                style={{ backgroundColor: '#111', border: '1px solid #1a1a1a' }}
               >
                 <div className="absolute top-0 left-0 w-0 h-1 group-hover:w-full transition-all duration-500" style={{ backgroundColor: '#F9D416' }} />
                 <div className="relative z-10">
@@ -98,9 +137,13 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 py-32">
+      <section className="px-6 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Let&apos;s work <span style={{ color: '#F9D416' }}>together</span>
             </h2>
@@ -113,9 +156,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-8" style={{ borderTop: '1px solid #1a1a1a' }}>
+      <footer className="px-6 py-8 relative z-10" style={{ borderTop: '1px solid #1a1a1a' }}>
         <div className="max-w-6xl mx-auto flex justify-between items-center text-sm text-gray-500">
-          <span> 2024 Designer Portfolio</span>
+          <span>© 2024 Designer Portfolio</span>
           <span>Built with Next.js</span>
         </div>
       </footer>
